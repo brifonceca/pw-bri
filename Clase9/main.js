@@ -1,10 +1,11 @@
-import {
-  formatearPrecio,
-  calcularDescuento,
-  estaDisponible
-} from "./utilidades.js";
+const usuario = { nombre: "Ana", edad: 16, suscripcion: "gratuita" };
 
-console.log(formatearPrecio(120000));        // "$120.000"
-console.log(calcularDescuento(10000, 20));   // 8000
-console.log(estaDisponible(0));              // false
-console.log(estaDisponible(5));              // true
+console.log("1");
+const edad = usuario;
+const acceso = edad >= 18 ? "Permitido" : "Denegado";
+console.log(acceso); 
+
+console.log("2");
+const plan = usuario;
+const solicitud = suscripcion ===  "Premium" ? "Gratuita";
+console.log(solicitud);
