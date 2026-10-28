@@ -158,44 +158,32 @@ console.log(productoContiene);
 //-------------------------------- Ejercicio 9 --------------------------------
 console.log("Ejercicio 9");
 
-const productosPorCategoria = productos
-.filter(function(producto){
-  return producto.activo === true;
-})
-.reduce(function(acumulador, producto){
-  const porCategoria = producto.categoria;
-  if(acumulador[porCategoria]){
-    acumulador[porCategoria]++;
-  } else {
-    acumulador[porCategoria] = 1;
-  }
+const productosPorCategoria = productos.reduce(function(acumulador, producto){
+  
+  if(producto.activo){
+    acumulador[producto.categoria]=(acumulador[producto.categoria] || 0)+1;
+  } 
   return acumulador;
 }, {});
 
-console.log(productosPorCategoria);
 
 //-------------------------------- Ejercicio 10 --------------------------------
 console.log("Ejercicio 10");
 
 function resumirInventario(productos) {
   return productos.reduce(function(acumulador, producto) {
-    // 1. Total de productos
     acumulador.total++;
 
-    // 2. Cantidad de productos activos
     if (producto.activo === true) {
       acumulador.activos++;
     }
 
-    // 3. Cantidad de productos sin stock
     if (producto.stock === 0) {
       acumulador.sinStock++;
     }
 
-    // 4. Valor total (precio * stock de todos los productos)
     acumulador.valorTotal += (producto.precio * producto.stock);
 
-    // 5. Conteo por categoría (sin filtro de activos)
     const cat = producto.categoria;
     if (acumulador.categorias[cat]) {
       acumulador.categorias[cat]++;
@@ -213,5 +201,6 @@ function resumirInventario(productos) {
   });
 }
 
-// Llamado:
 console.log(resumirInventario(productos));
+
+console.log(productosPorCategoria);
